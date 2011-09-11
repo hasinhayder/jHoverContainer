@@ -58,13 +58,11 @@
             var link = $(this).find("a").attr("href");
             $(this).find("a").remove();
             $(this).find("img").remove();
-            var slide = "";
+            var slide = opts.slide;
             if(opts.slide=="random"){
                 var slideno = Math.floor(Math.random()*8);
                 slide = slides[slideno];
             }
-            else
-            slide = opts.slide;
             $(this).html("\n\
                     <div class='hc'>\n\
                         <div class='hcimage'>\n\
