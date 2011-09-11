@@ -62,7 +62,6 @@
             if(opts.slide=="random"){
                 var slideno = Math.floor(Math.random()*8);
                 slide = slides[slideno];
-                alert(slideno+"\n"+slide);
             }
             else
             slide = opts.slide;
@@ -73,7 +72,7 @@
                         </div>\n\
                         <div class='hccontainer'>\n\
                             <span class='hctitle'>"+title+"</span>\n\
-                            <p class='hccontent'>"+content+"</p>\n\
+                            <p class='hccontent'>"+content+" "+slide+"</p>\n\
                             <div class='hclinkpreview'>\n\
                                 <div class='hclink'>\n\
                                     <a href='"+link+"'>"+title+"</a>\n\
@@ -104,7 +103,6 @@
                 break
             case "down":
                 anim.top="+"+opts.height;
-                mysql_connect();
                 break
             case "down-right":
                 anim.top="+"+opts.height;

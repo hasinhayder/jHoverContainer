@@ -94,7 +94,6 @@
                 break
             case "down":
                 anim.top="+"+opts.height;
-                mysql_connect();
                 break
             case "down-right":
                 anim.top="+"+opts.height;
