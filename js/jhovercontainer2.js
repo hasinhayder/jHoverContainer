@@ -72,7 +72,7 @@
                         </div>\n\
                         <div class='hccontainer'>\n\
                             <span class='hctitle'>"+title+"</span>\n\
-                            <p class='hccontent'>"+content+" "+slide+"</p>\n\
+                            <p class='hccontent'>"+content+"</p>\n\
                             <div class='hclinkpreview'>\n\
                                 <div class='hclink'>\n\
                                     <a href='"+link+"'>"+title+"</a>\n\
