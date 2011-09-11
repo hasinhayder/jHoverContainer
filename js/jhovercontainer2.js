@@ -11,6 +11,7 @@
 (function($){
     var opts;
     var styleadded = false;
+    var slides = ["up","right","down","left","up-right","up-left","down-left","down-right"];
     $.fn.jHoverContainer=function(options){
         var defaults = {
             slide:"right",
@@ -18,13 +19,8 @@
             easing:"circEaseIn",
             width:226,
             height:147,
-            image:"http://scripts.ofhas.in/hovercontainer/images/image2.jpg",
-            content:"Lorem Ipsum Doler Sit Amet",
             borderWidth:5,
-            borderColor:"#444",
-            title:"Hello World",
-            linkTitle:"READ MORE",
-            link:"http://google.com"
+            borderColor:"#444"
         };
         opts = $.extend(defaults, options);
         if(!styleadded){
@@ -56,27 +52,41 @@
             styleadded=true;
         }
         $(this).each(function(i,item){
+            var img = $(this).find("img").attr("src");
+            var title = $(this).find("a").attr("title");
+            var content = $(this).find("a").html();
+            var link = $(this).find("a").attr("href");
+            $(this).find("a").remove();
+            $(this).find("img").remove();
+            var slide = "";
+            if(opts.slide=="random"){
+                var slideno = Math.floor(Math.random()*8);
+                slide = slides[slideno];
+                alert(slideno+"\n"+slide);
+            }
+            else
+            slide = opts.slide;
             $(this).html("\n\
                     <div class='hc'>\n\
                         <div class='hcimage'>\n\
-                            <img src='"+opts.image+"' alt=''/>\n\
+                            <img src='"+img+"' alt=''/>\n\
                         </div>\n\
                         <div class='hccontainer'>\n\
-                            <span class='hctitle'>"+opts.title+"</span>\n\
-                            <p class='hccontent'>"+opts.content+"</p>\n\
+                            <span class='hctitle'>"+title+"</span>\n\
+                            <p class='hccontent'>"+content+"</p>\n\
                             <div class='hclinkpreview'>\n\
                                 <div class='hclink'>\n\
-                                    <a href='"+opts.link+"'>"+opts.linkTitle+"</a>\n\
+                                    <a href='"+link+"'>"+title+"</a>\n\
                                 </div>\n\
                             </div>\n\
                         <div class='hcclear'></div>\n\
                         </div>\n\
                     </div>\n\
                     ").find(".hcimage")
-                            .data("slide",opts.slide)
+                            .data("slide",slide)
                             .bind("mouseenter",$.fn.hcSlideOut).end()
                       .find(".hc").bind("mouseleave",$.fn.hcSlideIn)
-                      .data("slide",opts.slide);
+                      .data("slide",slide);
         });
     }
     $.fn.hcSlideOut = function(){
